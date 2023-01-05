@@ -3,10 +3,11 @@ import { Autocomplete } from '@react-google-maps/api';
 import { AppBar, Toolbar, Typography, InputBase, Box} from '@material-ui/core'
 import SearchIcon from '@material-ui/icons/Search'
 import useStyles from './styles';
+import axios from "axios";
 import { useNavigate, NavLink } from 'react-router-dom'
 import './Header.css'
 
-const Header = ({ setCoordinates}) => {
+const Header = ({ setCoordinates, setLoggedIn }) => {
     const classes = useStyles()
     const [autocomplete, setAutocomplete] = useState(null)
 
@@ -20,18 +21,19 @@ const Header = ({ setCoordinates}) => {
     }
 
     const navigate = useNavigate()
-
-    const handleLogOut = () => {
-        fetch('/logout', {
-          method:"DELETE"
+    
+    const handleLogOutClick = () => {
+        axios.delete("http://localhost:3000/logout", { withCredentials: true})
+        .then(response => {
+            setLoggedIn({
+                user: {},
+                loggedInStatus: 'NOT_LOGGED_IN'
+            })
+            navigate('/');
+        }).catch(errors => {
+            console.log("logout error", errors.response.data)
         })
-        .then(res => {
-          if(res.ok){
-            sessionStorage.clear()
-          }
-        })
-        navigate('/landingpage')
-      }
+    }
 
     return (
         <AppBar position="static">
@@ -39,10 +41,10 @@ const Header = ({ setCoordinates}) => {
                 <div className="dropdown">
                 <button className="dropbtn">Adventure Awaits</button>
                     <div className="dropdown-content">
-                        <NavLink to='/'>Home</NavLink>
+                        <NavLink to='/home'>Home</NavLink>
                         <NavLink to='/bookmarks'>Bookmarks</NavLink>
                         <NavLink to='/trips'>Routes</NavLink>
-                        <NavLink onClick={handleLogOut}>Log Out</NavLink>
+                        <NavLink onClick={handleLogOutClick}>Log Out</NavLink>
                     </div>
                 </div>
                 <Box display="flex">

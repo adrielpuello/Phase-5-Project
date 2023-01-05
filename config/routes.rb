@@ -2,10 +2,13 @@ Rails.application.routes.draw do
   resources :trips
   resources :users, only: [:index, :show, :create]
   resources :locations
+  resources :sessions, only: [:create]
+  resources :registrations, only: [:create]
+  root to: "static#home"
 
   post "/login", to: "sessions#create"
-  delete "/logout", to: "sessions#delete"
-  get "/authorized_user", to: "users#show"
+  delete "/logout", to: "sessions#logout"
+  get "/logged_in", to: "sessions#logged_in"
   
 
   # Routing logic: fallback requests for React Router.

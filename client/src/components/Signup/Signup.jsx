@@ -1,63 +1,56 @@
 import React, { useState } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
+const Signup = ({ setLoggedIn }) => {
 
-const Signup = () => {
+    const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
-        first_name:'',
-        last_name:'',
-        username:'',
-        password:'',
-        country:''
+        email: '',
+        password: '',
+        password_confirmation: '',
+        registrationErrors: ''
     })
-    const {first_name, last_name, username, password} = formData
-    const [errors, setErrors] = useState([])
 
-    
+    const handleSubmit = (e) => {
+
+        axios.post("http://localhost:3000/registrations", {
+            user: {
+                email: formData.email,
+                password: formData.password,
+                password_confrimation: formData.password_confirmation,
+            }
+        },
+        { withCredentials: true}
+        ).then(response => {
+            if (response.data.status === 'created') {
+                navigate('/home');
+                setLoggedIn({
+                    user: response.data.user,
+                    loggedInStatus: 'LOGGED_IN'
+                })
+            }
+        }).catch(error => {
+            console.log(error.response.data)
+        })
+        e.preventDefault();
+    }
 
     const handleChange = (e) => {
         const { name, value } = e.target
         setFormData({ ...formData, [name]: value })
     }
 
-    function onSubmitSignup(e){
-        e.preventDefault()
-        const user = {
-            first_name,
-            last_name,
-            username,
-            password,
-        }
-       
-        fetch(`/users`, {
-          method: 'POST',
-          headers: {'Content-Type': 'application/json'},
-          body: JSON.stringify(user)
-        })
-        .then(res => {
-            if(res.ok) {
-                res.json().then(user => {
-                })
-            } else {
-                res.json().then(json => setErrors(Object.entries(json.errors)))
-            }
-        })
-    }
-
     return (
-        <>
-        <h1>Signup</h1>
-        <label>First Name : </label>
-        <input placeholder="Your First Name..." type='text' name='first_name' value={first_name} onChange={handleChange} />
-        <label>Last Name : </label>
-        <input placeholder="Your Last Name..." type='text' name='last_name' value={last_name} onChange={handleChange} />
-        <label>Username : </label>
-        <input placeholder="Your Username..." type='text' name='username' value={username} onChange={handleChange} />
-        <label>Password : </label>
-        <input placeholder="Your Password..." type='password' name='password' value={password} onChange={handleChange} />
-        <input id="signup-form" className="button" type='submit' value="Sign Up" onClick={onSubmitSignup}/>
-        </>
-        
+        <div>
+        <form onSubmit={handleSubmit}>
+        <input type="email" name="email" placeholder="Enter Email..." value={formData.email} onChange={handleChange} required></input>
+        <input type="password" name="password" placeholder="Enter Password..." value={formData.password} onChange={handleChange} required></input>
+        <input type="password" name="password_confirmation" placeholder="Confirm Password..." value={formData.password_confirmation} onChange={handleChange} required></input>
+        <button type='submit'>Sign Up</button>
+        </form>
+        </div>
     )
 }
 

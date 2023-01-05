@@ -8,6 +8,10 @@ gem "rails", "~> 7.0.4"
 
 gem 'rack-cors'
 
+gem 'pg'
+
+gem 'bcrypt'
+
 gem 'active_model_serializers'
 
 # Use sqlite3 as the database for Active Record

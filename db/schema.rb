@@ -26,7 +26,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_220036) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "routes", force: :cascade do |t|
+  create_table "trips", force: :cascade do |t|
     t.string "name"
     t.integer "stops"
     t.datetime "created_at", null: false
@@ -34,10 +34,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_04_220036) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "username"
-    t.string "password"
-    t.string "first_name"
-    t.string "last_name"
+    t.string "email"
+    t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
