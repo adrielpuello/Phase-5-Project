@@ -1,0 +1,8 @@
+
+  html { 
+    background: url('/home/adrielpuello/Development/Code/projects/adventure-awaits/client/src/background/lake-3840x2160-4k-hd-wallpaper-mountains-forest-pine-154.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }

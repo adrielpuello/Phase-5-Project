@@ -5,7 +5,7 @@ import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import Rating from '@material-ui/lab/Rating';
 import useStyles from './styles';
 
-const Map = ({ setCoordinates, setBounds, coordinates, places, setChildClicked, loggedIn, setLoggedIn}) => {
+const Map = ({ setCoordinates, setBounds, coordinates, places, setChildClicked }) => {
 
     const classes = useStyles();
     const isDesktop = useMediaQuery('(min-width:600px)');

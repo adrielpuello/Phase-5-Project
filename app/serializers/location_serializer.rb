@@ -1,3 +1,3 @@
 class LocationSerializer < ActiveModel::Serializer
-  attributes :id, :rating, :ranking, :price, :type, :name, :address, :phone_number, :website
+  attributes :id, :name, :event_type, :address
 end

@@ -5,3 +5,25 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+User.destroy_all
+
+    User.create([{
+            email: 'jordy@gmail.com', password: '1234'
+        },
+        {
+            email: 'samantha@gmail.com', password: '1234'
+        },
+        {
+            email: 'chris@gmail.com', password: '1234'
+        }])
+
+
+Location.destroy_all
+20.times do
+    Location.create(name: Faker::Restaurant.name, event_type: Faker::Restaurant.type, address: Faker::Address.full_address)
+end
+
+Review.destroy_all
+100.times do
+    Review.create(caption: Faker::Quotes::Shakespeare.as_you_like_it_quote, message: Faker::JapaneseMedia::CowboyBebop.quote, location_id: rand(1..60), user_id: rand(1..3))
+end

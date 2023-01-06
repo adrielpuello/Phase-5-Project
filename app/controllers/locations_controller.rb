@@ -5,7 +5,13 @@ class LocationsController < ApplicationController
 
     def show
         location = find_location
-        render json: location, status: :ok
+        render json: location, serializer: LocationReviewSerializer, status: :ok
+    end
+
+    def update
+        location = find_location
+        location.update!(location_params)
+        render json: location, status: :accepted
     end
 
     def create
@@ -14,18 +20,18 @@ class LocationsController < ApplicationController
     end
 
     def destroy
-        Location = find_Location
-        Location.destroy
-        head :no-content
+        location = find_location
+        location.destroy
+        head :no_content
     end
 
     private
 
-    def find_Location
+    def find_location
         Location.find(params[:id])
     end
 
     def location_params
-        params.permit(:rating, :ranking, :price, :type, :name, :address, :phone_number, :website)
+        params.permit(:name, :event_type, :address)
     end
 end

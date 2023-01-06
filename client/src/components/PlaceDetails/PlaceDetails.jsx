@@ -6,7 +6,7 @@ import Rating from '@material-ui/lab/Rating'
 
 import useStyles from './styles'
 
-const PlaceDetails = ({ place, selected, refProp }) => {
+const PlaceDetails = ({ place, selected, refProp}) => {
     const classes = useStyles();
 
     if(selected) refProp?.current?.scrollIntoView({ behavior: "smooth", block: "start"})
@@ -19,7 +19,10 @@ const PlaceDetails = ({ place, selected, refProp }) => {
                 title={place.name}
                 />
                 <CardContent>
+                    <Box display='flex' justifyContent='space-between'>
                     <Typography gutterBottom variant='h5'>{place.name}</Typography>
+                    </Box>
+                    
                     <Box display='flex' justifyContent='space-between'>
                     <Rating value={Number(place.rating)} readOnly />
                         <Typography gutterBottom variant='subtitle1'>out of {place.num_reviews} reviews</Typography>

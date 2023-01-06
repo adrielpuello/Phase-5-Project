@@ -12,23 +12,18 @@
 
 ActiveRecord::Schema[7.0].define(version: 2023_01_04_220036) do
   create_table "locations", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "route_id"
-    t.string "rating"
-    t.string "ranking"
-    t.string "type"
     t.string "name"
+    t.string "event_type"
     t.string "address"
-    t.string "phone"
-    t.string "website"
-    t.string "price_level"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "trips", force: :cascade do |t|
-    t.string "name"
-    t.integer "stops"
+  create_table "reviews", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "location_id"
+    t.string "message"
+    t.string "caption"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

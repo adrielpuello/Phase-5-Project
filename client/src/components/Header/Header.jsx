@@ -7,7 +7,7 @@ import axios from "axios";
 import { useNavigate, NavLink } from 'react-router-dom'
 import './Header.css'
 
-const Header = ({ setCoordinates, setLoggedIn }) => {
+const Header = ({ setCoordinates, loggedIn, setLoggedIn }) => {
     const classes = useStyles()
     const [autocomplete, setAutocomplete] = useState(null)
 
@@ -21,17 +21,19 @@ const Header = ({ setCoordinates, setLoggedIn }) => {
     }
 
     const navigate = useNavigate()
+
+    const handleLogOut = () => {
+        setLoggedIn({...loggedIn, user: {}});
+        setLoggedIn({...loggedIn, loggedInStatus: 'NOT_LOGGED_IN'});
+        navigate('/');
+      }
     
     const handleLogOutClick = () => {
         axios.delete("http://localhost:3000/logout", { withCredentials: true})
-        .then(response => {
-            setLoggedIn({
-                user: {},
-                loggedInStatus: 'NOT_LOGGED_IN'
-            })
-            navigate('/');
+        .then(res => {
+            handleLogOut();
         }).catch(errors => {
-            console.log("logout error", errors.response.data)
+            console.log(errors)
         })
     }
 
@@ -42,8 +44,8 @@ const Header = ({ setCoordinates, setLoggedIn }) => {
                 <button className="dropbtn">Adventure Awaits</button>
                     <div className="dropdown-content">
                         <NavLink to='/home'>Home</NavLink>
-                        <NavLink to='/bookmarks'>Bookmarks</NavLink>
-                        <NavLink to='/trips'>Routes</NavLink>
+                        <NavLink to='/locations'>Your Locations</NavLink>
+                        <NavLink to='/locations/new'>Add Locations</NavLink>
                         <NavLink onClick={handleLogOutClick}>Log Out</NavLink>
                     </div>
                 </div>

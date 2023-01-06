@@ -5,7 +5,7 @@ import Header from "../Header/Header";
 import List from "../List/List";
 import Map from "../Map/Map";
 
-const Home = ({getPlacesData}) => {
+const Home = ({ getPlacesData, loggedIn, setLoggedIn }) => {
 
     const [places, setPlaces] = useState([]);
     const [filteredPlaces, setFilteredPlaces] = useState([])
@@ -46,7 +46,7 @@ const Home = ({getPlacesData}) => {
     return (
         <>
         <CssBaseline />
-        <Header setCoordinates={setCoordinates}/>
+        <Header setCoordinates={setCoordinates} loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
             <Grid container spacing={3} style={{ width: '100%'}}>
                 <Grid item xs={12} md={4}>
                     <List 

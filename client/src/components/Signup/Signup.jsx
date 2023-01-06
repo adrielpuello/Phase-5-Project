@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
+import './Signup.css'
 
-const Signup = ({ setLoggedIn }) => {
+const Signup = ({ loggedIn, setLoggedIn }) => {
 
     const navigate = useNavigate();
 
@@ -26,10 +27,8 @@ const Signup = ({ setLoggedIn }) => {
         ).then(response => {
             if (response.data.status === 'created') {
                 navigate('/home');
-                setLoggedIn({
-                    user: response.data.user,
-                    loggedInStatus: 'LOGGED_IN'
-                })
+                setLoggedIn({...loggedIn, user: response.data.user});
+                setLoggedIn({...loggedIn, loggedInStatus: 'LOGGED_IN'});
             }
         }).catch(error => {
             console.log(error.response.data)
@@ -43,12 +42,13 @@ const Signup = ({ setLoggedIn }) => {
     }
 
     return (
-        <div>
+        <div id ="login-page">
         <form onSubmit={handleSubmit}>
         <input type="email" name="email" placeholder="Enter Email..." value={formData.email} onChange={handleChange} required></input>
         <input type="password" name="password" placeholder="Enter Password..." value={formData.password} onChange={handleChange} required></input>
         <input type="password" name="password_confirmation" placeholder="Confirm Password..." value={formData.password_confirmation} onChange={handleChange} required></input>
-        <button type='submit'>Sign Up</button>
+        <button id="login-form" className="button" type='submit'>Sign Up</button>
+        <NavLink className="NavLink" to='/verifyuser'>Already Have an Account?</NavLink>
         </form>
         </div>
     )
