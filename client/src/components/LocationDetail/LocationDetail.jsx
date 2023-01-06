@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import ReviewContainer from '../ReviewContainer/ReviewContainer'
 import Header from '../Header/Header'
+import './LocationDetail.css'
 
 function LocationDetail({loggedIn, setLoggedIn}) {
     const [location, setLocation] = useState({})
@@ -36,9 +37,8 @@ function LocationDetail({loggedIn, setLoggedIn}) {
           <div className='wrapper'>
             <div id="location-page" >
             <h1>{name}</h1>
-              <h3>What'd You Do?</h3>
-              <p>{event_type}</p>
-              <p>{address}</p>
+              <h3>{event_type}</h3>
+              <h3>{address}</h3>
               <h3>Reviews : </h3>
               <div><ReviewContainer reviews={reviews}/></div>
             </div>

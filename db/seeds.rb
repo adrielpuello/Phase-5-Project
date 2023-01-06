@@ -20,7 +20,7 @@ User.destroy_all
 
 Location.destroy_all
 20.times do
-    Location.create(name: Faker::Restaurant.name, event_type: Faker::Restaurant.type, address: Faker::Address.full_address)
+    Location.create(name: Faker::Restaurant.name, event_type: Faker::Restaurant.type, address: Faker::Nation.capital_city)
 end
 
 Review.destroy_all

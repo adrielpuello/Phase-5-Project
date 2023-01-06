@@ -1,6 +1,7 @@
 import React, { useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../Header/Header';
+import './LocationForm.css'
 
 function LocationForm({addLocation, loggedIn, setLoggedIn}) {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ function LocationForm({addLocation, loggedIn, setLoggedIn}) {
       <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
       <div id ='location-form' className='content'>
         <div onSubmit={onSubmit}>
-          <label>Where You Went :</label>
+          <label>Where You're Going :</label>
           <input type='text' name='name' value={formData.name} onChange={handleChange} />
           
           <label>Type of Event :</label>

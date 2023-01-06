@@ -1,0 +1,20 @@
+.grid-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+.Link {
+    color: white;
+    text-decoration: none;
+}
+
+.button {
+  border-radius: 0px;
+}
+
+h2 {
+  color: white;
+  font-family:Arial, Helvetica, sans-serif;
+}

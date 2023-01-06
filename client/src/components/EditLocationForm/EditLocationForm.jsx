@@ -1,5 +1,6 @@
 import React, { useState, useEffect} from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
+import './EditLocationForm.css'
 
 function EditLocationForm({updateLocation}) {
   const navigate = useNavigate()
@@ -36,15 +37,15 @@ function EditLocationForm({updateLocation}) {
 
     return (
         <>
-        <div id="edit-book" className='App'>
+        <div id="edit-location" className='App'>
           <div >
-            <label>Where You Went : </label>
+            <label>The Destination : </label>
             <input type='text' name='name' value={formData.name} onChange={handleChange} />
             
             <label> Type of Event : </label>
             <input type='text' name='event_type' value={formData.event_type} onChange={handleChange} />
         
-            <label>Address : </label>
+            <label>Location : </label>
             <input type='text' name='address' value={formData.address} onChange={handleChange} />
                 
             <input id="update-button" className= "button" type='submit' value='Update Location' onClick={onSubmit}/>

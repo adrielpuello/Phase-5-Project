@@ -9,7 +9,7 @@ function Locations({ loggedIn, setLoggedIn, locations, deleteLocation }) {
     return (
         <div>
         <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
-        <h1>All Your Adventures</h1>
+        <h1>Places to go, a world to see!</h1>
         <LocationContainer locations={locations} deleteLocation={deleteLocation}/>
         </div>   
     )

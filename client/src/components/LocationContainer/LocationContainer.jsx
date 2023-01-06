@@ -1,5 +1,6 @@
 import React from 'react'
 import LocationCard from '../LocationCard/LocationCard'
+import './LocationContainer.css'
 
 const LocationContainer = ({locations}) => {
     return (
