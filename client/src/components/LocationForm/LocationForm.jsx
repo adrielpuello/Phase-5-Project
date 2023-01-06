@@ -32,13 +32,13 @@ function LocationForm({addLocation, loggedIn, setLoggedIn}) {
       <Header loggedIn={loggedIn} setLoggedIn={setLoggedIn}/>
       <div id ='location-form' className='content'>
         <div onSubmit={onSubmit}>
-          <label>Where You're Going :</label>
+          <label>The Destination :</label>
           <input type='text' name='name' value={formData.name} onChange={handleChange} />
           
           <label>Type of Event :</label>
           <input type='text' name='event_type' value={formData.event_type} onChange={handleChange} />
         
-          <label>Address :</label>
+          <label>Location :</label>
           <input type='text' name='address' value={formData.address} onChange={handleChange} />
 
           <input id="add-location" className="button" type='submit' value='Add Location' onClick={onSubmit}/>
