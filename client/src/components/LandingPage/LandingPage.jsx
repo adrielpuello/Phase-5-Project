@@ -12,9 +12,9 @@ const LandingPage = ({logo}) => {
     }
 
     return (
-        <div>
+        <div id="landingpage">
         <div><img className='img' src={logo} alt='logo'/></div>    
-        <div id="landingpage"> 
+        <div> 
         <h1>Adventure Awaits</h1>
         <button className="button" onClick={handleClick}>Get Started</button>
         </div>

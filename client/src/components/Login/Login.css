@@ -21,7 +21,6 @@ input {
   #login-page{
     width: 410px;
     margin: 0px auto;
-    background-color: white;
     padding: 40px;
     border-radius: 15px;
   }
@@ -32,6 +31,11 @@ input {
     width: 400px;
     display: flex;
     justify-content: center;
+  }
+
+  #login{
+    border-width: 2px;
+    background-color: transparent;
   }
 
   .NavLink {

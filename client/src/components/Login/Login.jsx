@@ -41,7 +41,7 @@ const Login = ({ loggedIn, setLoggedIn }) => {
 
         return (
             <div id ="login-page">
-            <form onSubmit={handleSubmit}>
+            <form className="login" onSubmit={handleSubmit}>
             <input type="email" name="email" placeholder="Enter Email..." value={formData.email} onChange={handleChange} required></input>
             <input type="password" name="password" placeholder="Enter Password..." value={formData.password} onChange={handleChange} required></input>
             <button id="login-form" className="button" type='submit'>Log In</button>
